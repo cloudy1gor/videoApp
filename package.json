@@ -62,7 +62,8 @@
     "normalize.css": "^8.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "semantic-ui-css": "^2.4.1"
+    "semantic-ui-css": "^2.4.1",
+    "styled-components": "^5.2.1"
   },
   "browserslist": {
     "production": [
@@ -75,5 +76,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "resolutions": {
+    "styled-components": "^5"
   }
 }
