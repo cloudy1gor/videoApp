@@ -15,6 +15,11 @@ body {
 export default class App extends Component {
   state = { videos: [], selectedVideo: null };
 
+  // дефолтный поисковый запрос с выводом вариантов
+  componentDidMount() {
+    this.onTermSubmit("gopro hero");
+  }
+
   onTermSubmit = async (term) => {
     const response = await youtube.get("/search", {
       params: {
@@ -22,7 +27,11 @@ export default class App extends Component {
       },
     });
 
-    this.setState({ videos: response.data.items });
+    this.setState({
+      videos: response.data.items,
+      // автоматически выведет первый ролик
+      selectedVideo: response.data.items[0],
+    });
   };
 
   onVideoSelect = (video) => {
@@ -39,12 +48,20 @@ export default class App extends Component {
 
           <span>Found {this.state.videos.length} videos.</span>
 
-          <VideoDetail video={this.state.selectedVideo} />
+          <div className="ui grid">
+            <div className="ui row">
+              <div className="eleven wide column">
+                <VideoDetail video={this.state.selectedVideo} />
+              </div>
 
-          <VideoList
-            videoSelect={this.onVideoSelect}
-            videos={this.state.videos}
-          />
+              <div className="five wide column">
+                <VideoList
+                  videoSelect={this.onVideoSelect}
+                  videos={this.state.videos}
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </>
     );

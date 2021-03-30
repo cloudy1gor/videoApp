@@ -1,4 +1,4 @@
-import styled from "styled-components";
+// import styled from "styled-components";
 
 const VIdeoDetail = ({ video }) => {
   if (!video) {
@@ -10,7 +10,12 @@ const VIdeoDetail = ({ video }) => {
   return (
     <div>
       <div className="ui smbed">
-        <iframe src={videoSrc} width="100%" height="600px"></iframe>
+        <iframe
+          src={videoSrc}
+          title="video"
+          width="100%"
+          height="600px"
+        ></iframe>
       </div>
       <div className="ui segment">
         <h3 className="ui header">{video.snippet.title}</h3>
